@@ -1,0 +1,14 @@
+# gitleaks findings accepted as false positives, scoped to an exact fingerprint
+# (commit:path:rule:line). This deliberately does NOT relax the rule set: a
+# .gitleaks.toml with `[extend] useDefault = false` would make the org security
+# floor report "no leaks found" while scanning for nothing. Each line silences one
+# known finding and nothing else — a newly committed secret is still caught.
+# Verified with gitleaks 8.21.2, the version the floor pins.
+#
+# private-key, security/security-senior-secops.md:46
+#   The file is a secops reference listing the PATTERNS an engineer should look
+#   for. Line 46 is the literal header `-----BEGIN RSA PRIVATE KEY-----` sitting
+#   in a list alongside `-----BEGIN EC PRIVATE KEY-----` and connection-string
+#   shapes like `postgresql://user:password@host`. It is documentation of what a
+#   leak looks like, not a leak. No key material follows the header.
+8237f99b850db8d5195815f80893554034fe983d:security/security-senior-secops.md:private-key:46
