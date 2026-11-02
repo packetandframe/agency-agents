@@ -1,0 +1,4 @@
+[mcp_servers.agent-stack]
+command = "/Users/codingagent/.local/bin/agent-stack-mcp"
+args = ["--root", "/Users/Shared/CODE/platform/agency-agents"]
+enabled = true
